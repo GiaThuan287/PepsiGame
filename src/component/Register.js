@@ -8,8 +8,11 @@ const Register = (props) => {
   const [showtick, setShowtick] = useState(true)
   const [showOTP, setShowOTP] = useState('')
 
-  const click = () => {
+  const clickOTP = () => {
     navigation.navigate('OTPRegister')
+  }
+  const click = ()=>{
+    navigation.navigate('Login')
   }
   return (
 
@@ -39,7 +42,7 @@ const Register = (props) => {
 
         {/* FORM */}
         <View style={{ flexDirection: 'column', alignItems: 'center', padding: 15 }}>
-          <Text style={styles.title2}>ĐĂNG KÝ</Text>
+          <Text style={styles.title2} onPress={click}>ĐĂNG KÝ</Text>
           <TextInput placeholder='Số điện thoại' onChange={() => setShowOTP(!showOTP)} style={styles.input1}></TextInput>
           <TextInput placeholder='Tên người dùng' style={styles.input1}></TextInput>
           <View style={styles.checkboxContainer}>
@@ -69,10 +72,10 @@ const Register = (props) => {
         <View style={{ flexDirection: 'column', alignItems: 'center' }}>
           {
             showOTP ?
-              <TouchableOpacity>
+              <TouchableOpacity onPress={clickOTP}>
                 <Image style={styles.btn} source={require('../media/btnOtp.png')} />
               </TouchableOpacity> :
-              <TouchableOpacity>
+              <TouchableOpacity onPress={clickOTP}>
                 <Image style={styles.btn} source={require('../media/btnOTPShow.png')} />
               </TouchableOpacity>
           }
@@ -87,9 +90,10 @@ const Register = (props) => {
         {/* IMAGE */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <Image style={styles.vector3} source={require('../media/Vector3.png')} />
-          <Image style={styles.vector4} source={require('../media/Vector4.png')} />
+          {/* <Image style={styles.vector4} source={require('../media/Vector4.png')} /> */}
         </View>
         {/* IMAGE */}
+        <Image style={styles.vector4} source={require('../media/Vector4.png')} />
 
 
 
@@ -144,7 +148,9 @@ const styles = StyleSheet.create({
 
   },
   vector4: {
-    marginTop: -130
+    position:'absolute',
+    marginTop:535,
+    marginLeft:185
   },
   vector5: {
     marginLeft: -20
@@ -183,6 +189,6 @@ const styles = StyleSheet.create({
   btn: {
     width: 225,
     height: 50,
-    marginTop: 10
+    marginTop: 10,zIndex:10
   }
 })

@@ -1,11 +1,39 @@
 import { Image, StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-const HomePage = () => {
+import { Modal } from '@ui-kitten/components';
+const HomePage = (props) => {
+    const {navigation}= props;
+
+    const play=()=>{
+        navigation.navigate('GamePlay')
+    }
+    const login=()=>{
+        navigation.navigate('Login')
+    }
+    const [dialogDiem, setDialogDiem] = useState(false);
     return (
         <LinearGradient
             colors={['#0063A7', '#02A7F0', '#0063A7']}
+            
             style={styles.linearGradient}>
+            {/* <Modal
+                animationType="fade"
+                transparent={true}
+                visible={dialogDiem}
+                onRequestClose={() => {
+                    setDialogDiem(!dialogDiem);
+
+                    
+                    onPress={() => setDialogDiem(true)}
+                }}
+            >
+                <View>
+          /**
+                   <Text>hello</Text>
+                </View>
+            </Modal> */}
+
             <View style={{ flexDirection: 'row', height: 300 }}>
                 <View style={{ flexDirection: "row", flex: 7 }}>
                     <Image style={styles.vector1} source={require('../media/HomePage/Vector1.png')} />
@@ -14,7 +42,7 @@ const HomePage = () => {
                     <Image style={styles.vector7} source={require('../media/HomePage/Vector7.png')} />
                     <Image style={styles.vector8} source={require('../media/HomePage/Vector8.png')} />
                     <Image style={styles.vector9} source={require('../media/HomePage/Vector9.png')} />
-                    <Image style={{position:'absolute',width:400,marginTop:350}} source={require('../media/HomePage/Vector10.png')} />
+                    <Image style={{ position: 'absolute', width: 400, marginTop: 350 }} source={require('../media/HomePage/Vector10.png')} />
 
 
                 </View>
@@ -22,7 +50,7 @@ const HomePage = () => {
                     <Image style={styles.vector4} source={require('../media/HomePage/Vector4.png')} />
                     <Image style={styles.vector5} source={require('../media/HomePage/Vector5.png')} />
                     <Image style={styles.vector6} source={require('../media/HomePage/Vector6.png')} />
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={login}>
                         <Image style={styles.vectorlogout} source={require('../media/HomePage/logout.png')} />
 
                     </TouchableOpacity>
@@ -35,13 +63,13 @@ const HomePage = () => {
                 <Text style={styles.title1}>Hướng dẫn</Text>
 
 
-                <TouchableOpacity style={styles.btnPlay}>
+                <TouchableOpacity style={styles.btnPlay} onPress={play} >
                     <Image style={styles.vectorbtn1} source={require('../media/HomePage/btnPlay/Vector1.png')} />
                     <Image style={styles.vectorbtn1} source={require('../media/HomePage/btnPlay/Vector2.png')} />
                     <Image style={styles.vectorbtn3} source={require('../media/HomePage/btnPlay/Vector3.png')} />
                     <Image style={styles.vectorbtn4} source={require('../media/HomePage/btnPlay/Vector4.png')} />
-                    <Text style={{textAlign:'center',color:'white',fontSize:18,fontWeight:'bold',paddingTop:10}}>Chơi ngay</Text>
-                    <Text style={{textAlign:'center',color:'white',fontSize:10}}>Bạn có tổng cộng <Text style={{color:'#FFDD00'}}>8</Text> lượt chơi</Text>
+                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 18, fontWeight: 'bold', paddingTop: 10 }}>Chơi ngay</Text>
+                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 10 }}>Bạn có tổng cộng <Text style={{ color: '#FFDD00' }}>8</Text> lượt chơi</Text>
                 </TouchableOpacity>
 
                 <Image style={styles.vectorbtn5} source={require('../media/HomePage/btnPlay/quetma.png')} />
@@ -59,15 +87,15 @@ const HomePage = () => {
 
             <Image style={styles.vector15} source={require('../media/HomePage/Vector15.png')} />
             <Image style={styles.VectorSmart} source={require('../media/HomePage/VectorSmart.png')} />
-           
-           
-            <View style={{flexDirection:'column',alignItems:'center',marginTop:110}}>
 
-            <Image style={styles.Vector12} source={require('../media/HomePage/Vector12.png')} />
+
+            <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 110 }}>
+
+                <Image style={styles.Vector12} source={require('../media/HomePage/Vector12.png')} />
 
             </View>
 
-          
+
         </LinearGradient>
     )
 }
@@ -75,24 +103,24 @@ const HomePage = () => {
 export default HomePage
 
 const styles = StyleSheet.create({
-    vectorbtn5:{
-marginTop:10
+    vectorbtn5: {
+        marginTop: 10
     },
     vectorbtn3: {
-        position:'absolute',
-        marginTop:24.9,
-        marginLeft:185,
-        borderRadius:5
-        
+        position: 'absolute',
+        marginTop: 24.9,
+        marginLeft: 185,
+        borderRadius: 5
+
     },
     vectorbtn4: {
 
         marginLeft: 47,
-        position:'absolute'
+        position: 'absolute'
     },
     vectorbtn1: {
         position: 'absolute',
-        borderRadius:10
+        borderRadius: 10
     },
     btnPlay: {
         width: 220,
@@ -159,7 +187,7 @@ marginTop:10
         marginLeft: 20
 
     },
-    vector10: { 
+    vector10: {
         marginLeft: 300,
         marginTop: -300,
 
@@ -171,20 +199,20 @@ marginTop:10
 
     },
     vector13: {
-        position:'absolute',
-        marginTop:300
+        position: 'absolute',
+        marginTop: 300
 
 
     },
     vector14: {
-        position:"absolute",
-        marginTop:450
+        position: "absolute",
+        marginTop: 450
 
 
     },
     vector15: {
-        position:'absolute',
-        marginTop:330
+        position: 'absolute',
+        marginTop: 330
 
 
     },

@@ -6,6 +6,10 @@ const OTPRegister = (props) => {
   const { navigation } = props;
   const [showtick, setShowtick] = useState(true)
   const [showOTP, setShowOTP] = useState('')
+
+  const next=()=>{
+    navigation.navigate('HomePage')
+  }
   return (
 
     <LinearGradient
@@ -46,7 +50,7 @@ const OTPRegister = (props) => {
           <TextInput style={styles.inputOTP} placeholder='-'></TextInput>
           <TextInput style={styles.inputOTP} placeholder='-'></TextInput>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={next}>
           <Image source={require('../media/btnXacNhanOTP.png')} />
         </TouchableOpacity>
         <Text style={styles.txtCheckBox}>Bạn chưa nhận được mã? <Text style={{ color: '#FFDD00' }}>Gửi lại mã</Text></Text>

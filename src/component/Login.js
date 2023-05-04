@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native'
+import { Image, StyleSheet, Text, View, TextInput, Button, TouchableOpacity,Pressable } from 'react-native'
 import React, { useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 const Login = (props) => {
@@ -7,6 +7,9 @@ const Login = (props) => {
   const [showOTP, setShowOTP] = useState('')
 
   const click = () => {
+    navigation.navigate('Register')
+  }
+  const otp=()=>{
     navigation.navigate('OTPRegister')
   }
   return (
@@ -42,7 +45,7 @@ const Login = (props) => {
     </View>
 
     <View style={{flexDirection:'column',padding:15}}>
-      <Text style={styles.txtCheckBox}>Số điện thoại</Text>
+      <Text style={styles.txtCheckBox} onPress={click}>Số điện thoại</Text>
       <TextInput placeholder='Số điện thoại' onChange={() => setShowOTP(!showOTP)} style={styles.input1}></TextInput>
       </View>
 
@@ -59,28 +62,29 @@ const Login = (props) => {
     {/* IMAGE */}
 
     {/* BUTTON */}
-    <View style={{ flexDirection: 'column', alignItems: 'center',marginTop:-80 }}>
+    <View style={{ flexDirection: 'column',marginTop:520,marginLeft:85,position:'absolute' }}>
       {
         showOTP ?
-          <TouchableOpacity>
+          <TouchableOpacity onPress={otp}>
             <Image style={styles.btn} source={require('../media/btnOtp.png')} />
           </TouchableOpacity> :
-          <TouchableOpacity>
+          <TouchableOpacity  onPress={otp}>
             <Image style={styles.btn} source={require('../media/btnOTPShow.png')} />
           </TouchableOpacity>
       }
 
 
 
-      <Text style={styles.txtCheckBox}>Hoặc</Text>
-      <TouchableOpacity onPress={click}><Image style={styles.btn} source={require('../media/btnLogin.png')} /></TouchableOpacity>
+      <Text style={{ marginLeft: 96,color: 'white'}}>Hoặc</Text>
+      <Pressable onPress={click} style={{zIndex:10}}><Image style={styles.btn} source={require('../media/btnRegister.png')} /></Pressable>
+      <Image style={styles.vector3} source={require('../media/Vector3.png')} />
+      <Image style={styles.vector4} source={require('../media/Vector4.png')} />
     </View>
     {/* BUTTON */}
 
     {/* IMAGE */}
     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-      <Image style={styles.vector3} source={require('../media/Vector3.png')} />
-      <Image style={styles.vector4} source={require('../media/Vector4.png')} />
+     
     </View>
     {/* IMAGE */}
 
@@ -128,19 +132,23 @@ const styles = StyleSheet.create({
     
       },
       vector3: {
-        marginTop: -70
+        marginTop: -70,
+        marginLeft:-85,
+       
     
     
       },
       vector4: {
-        marginTop: -125
+        marginTop: -237,
+        marginLeft:100,
+      
       },
       vector5: {
         marginLeft: -20
       },
       vector6: {
         marginLeft: 355,
-        marginTop: -20
+        marginTop: -95
       },
       title: {
         fontSize: 20,
@@ -172,7 +180,8 @@ const styles = StyleSheet.create({
       btn: {
         width: 225,
         height: 50,
-        marginTop:10
+        marginTop:10,
+        zIndex:3,
         
       }
 })
