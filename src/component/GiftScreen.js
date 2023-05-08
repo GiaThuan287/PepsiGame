@@ -1,13 +1,30 @@
 import { Image, StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { Modal } from '@ui-kitten/components';
+
+
 const GiftScreen = (props) => {
+    const [randomImage, setRandomImage] =useState('');
     const {navigation}= props;
     const back = ()=>{
         navigation.navigate('GamePlay')
     }
     const [dialogDiem, setDialogDiem] = useState(false);
+
+    const renderImage = () => {
+        const Images = [
+          { image: require('../media/Gift1/7up50.png') },
+          { image: require('../media/Gift1/mirinda100.png') },
+          { image: require('../media/Gift1/Pepsi50.png') },
+          
+        ];
+        const randomImageIndex = Math.floor(Math.random() * Math.floor(3));
+        return Images[randomImageIndex].image;
+    }
+    useEffect(()=>{
+        setRandomImage(renderImage);
+    })
     return (
         <LinearGradient
             colors={['#0063A7', '#02A7F0', '#0063A7']}
@@ -29,7 +46,10 @@ const GiftScreen = (props) => {
 
             {/* BODY */}
 
+            {/* GiftImage */}
+            
             <Image style={styles.pepsi50} source={require('../media/Gift1/Pepsi50.png')}/>
+            {/* <Image style={styles.pepsi50} source={{uri:renderImage}}/> */}
 
             <View style={{alignItems:'center',marginTop:480,marginLeft:60,position:'absolute',zIndex:10}}>
             <Text style={styles.txt1}>Chúc mừng bạn đã nhận được</Text>

@@ -14,6 +14,9 @@ const Register = (props) => {
   const click = ()=>{
     navigation.navigate('Login')
   }
+  const clickIntro = ()=>{
+    navigation.navigate('Intro')
+  }
   return (
 
     <>
@@ -57,7 +60,7 @@ const Register = (props) => {
             }
 
 
-            <Text style={styles.txtCheckBox}>Tôi đã đọc và đồng ý với <Text style={{ color: '#FFDD00' }}>thể lệ chương trình</Text> Pepsi Tết</Text>
+            <Text style={styles.txtCheckBox}>Tôi đã đọc và đồng ý với <Text onPress={clickIntro} style={{ color: '#FFDD00' }}>thể lệ chương trình</Text> Pepsi Tết</Text>
           </View>
         </View>
         {/* FORM */}
