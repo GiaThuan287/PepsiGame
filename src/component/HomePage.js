@@ -11,6 +11,13 @@ const HomePage = (props) => {
     const login=()=>{
         navigation.navigate('Login')
     }
+    const collection=()=>{
+        navigation.navigate('Collection')
+
+    } 
+    const detail=()=>{
+        navigation.navigate('DetailGift')
+    }
     const [dialogDiem, setDialogDiem] = useState(false);
     return (
         <LinearGradient
@@ -62,7 +69,7 @@ const HomePage = (props) => {
                 <Image style={styles.vector11} source={require('../media/HomePage/Vector11.png')} />
                 <Text style={styles.title1}>Hướng dẫn</Text>
 
-
+                {/* PLAY-BUTTON */}
                 <TouchableOpacity style={styles.btnPlay} onPress={play} >
                     <Image style={styles.vectorbtn1} source={require('../media/HomePage/btnPlay/Vector1.png')} />
                     <Image style={styles.vectorbtn1} source={require('../media/HomePage/btnPlay/Vector2.png')} />
@@ -70,11 +77,19 @@ const HomePage = (props) => {
                     <Image style={styles.vectorbtn4} source={require('../media/HomePage/btnPlay/Vector4.png')} />
                     <Text style={{ textAlign: 'center', color: 'white', fontSize: 18, fontWeight: 'bold', paddingTop: 10 }}>Chơi ngay</Text>
                     <Text style={{ textAlign: 'center', color: 'white', fontSize: 10 }}>Bạn có tổng cộng <Text style={{ color: '#FFDD00' }}>8</Text> lượt chơi</Text>
+
+                </TouchableOpacity>
+                <Image style={styles.vectorbtn5} source={require('../media/HomePage/btnPlay/quetma.png')} />
+
+                {/* COLLECTION-BUTTON */}
+                <TouchableOpacity onPress={collection}>
+                <Image style={styles.vectorbtn5} source={require('../media/HomePage/btnPlay/bosuutap.png')} />
                 </TouchableOpacity>
 
-                <Image style={styles.vectorbtn5} source={require('../media/HomePage/btnPlay/quetma.png')} />
-                <Image style={styles.vectorbtn5} source={require('../media/HomePage/btnPlay/bosuutap.png')} />
+                <TouchableOpacity onPress={detail}>
                 <Image style={styles.vectorbtn5} source={require('../media/HomePage/btnPlay/chitiet.png')} />
+
+                </TouchableOpacity>
 
 
 

@@ -11,6 +11,8 @@ import HomePage from './src/component/HomePage';
 import GamePlay from './src/component/GamePlay';
 import GiftScreen from './src/component/GiftScreen';
 import Introduce from './src/component/Introduce';
+import Collection from './src/component/Collection';
+import DetailGift from './src/component/DetailGift';
 
 const Stack= createNativeStackNavigator()
 
@@ -26,6 +28,10 @@ const App = () => {
       <Stack.Screen name="GamePlay" component={GamePlay} />
       <Stack.Screen name="Gift" component={GiftScreen} />
       <Stack.Screen name="Intro" component={Introduce} />
+      <Stack.Screen name="Collection" component={Collection} />
+      <Stack.Screen name="DetailGift" component={DetailGift} />
+
+
 
     </Stack.Navigator>
   </NavigationContainer>
