@@ -2,18 +2,19 @@ import { Image, StyleSheet, Text, View, TextInput, Button, TouchableOpacity } fr
 import React, { useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { Modal } from '@ui-kitten/components';
+import Draggable from 'react-native-draggable';
 const GamePlay = (props) => {
-    const {navigation} = props;
-    const logout =()=>{
+    const { navigation } = props;
+    const logout = () => {
         navigation.navigate('Login')
     }
-    const back =()=>{
+    const back = () => {
         navigation.navigate('HomePage')
     }
-    const gift=()=>{
+    const gift = () => {
         navigation.navigate('Gift')
     }
-    
+
     const [dialogDiem, setDialogDiem] = useState(false);
     return (
         <LinearGradient
@@ -62,10 +63,24 @@ const GamePlay = (props) => {
             <Image style={styles.vector6} source={require('../media/PlayScreen1/Vector6.png')} />
             <Image style={styles.vector7} source={require('../media/PlayScreen1/Vector7.png')} />
 
-            <TouchableOpacity style={styles.vector8} onPress={gift}>
-            <Image  source={require('../media/PlayScreen1/Vector9.png')} />
+            {/* <TouchableOpacity style={styles.vector8} onPress={gift}>
+                <Image source={require('../media/PlayScreen1/Vector9.png')} />
 
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <Draggable
+
+               
+                x={92}
+                y={599}
+                maxX={92}
+                minX={92}
+                minY={400}
+                renderSize={180}
+                shouldReverse
+                onDragRelease={() => navigation.navigate('Gift')}>
+
+<Image source={require('../media/PlayScreen1/Vector9.png')} />
+            </Draggable>
 
 
 
@@ -106,23 +121,23 @@ const styles = StyleSheet.create({
     },
     vector6: {
         position: 'absolute',
-        marginLeft:170
-        ,marginTop:560,
-        
-        width:50
-        ,height:45
+        marginLeft: 170
+        , marginTop: 560,
+
+        width: 50
+        , height: 45
     },
     vector7: {
         position: 'absolute',
-        
-        marginTop:482,
-        width:"100%"
+
+        marginTop: 482,
+        width: "100%"
         ,
     },
-    vector8:{
-        position:'absolute',
-        width:'50%',
-        marginLeft:95,
-        marginTop:600
+    vector8: {
+        position: 'absolute',
+        width: '50%',
+        marginLeft: 95,
+        marginTop: 600
     },
 })

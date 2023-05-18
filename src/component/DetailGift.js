@@ -1,6 +1,8 @@
 import { Image, StyleSheet, Text, View, TextInput, Button, TouchableOpacity,ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient';
+import Modal from "react-native-modal";
+import { OverflowMenu } from '@ui-kitten/components';
 
 
 const DetailGift = (props) => {
@@ -19,6 +21,9 @@ const DetailGift = (props) => {
     const back = () => {
         navigation.navigate('HomePage')
     }
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
 
     return (
@@ -100,6 +105,43 @@ const DetailGift = (props) => {
 
 
                 </View>
+                <Modal isVisible={isModalVisible} >
+                    <View style={{ borderRadius: 10, backgroundColor: '#FCE582', width: 330, height: 600, marginLeft: 15, padding: 5 }}>
+
+                        <TouchableOpacity onPress={handleModal}>
+                            <Image style={{ position: 'absolute', marginLeft: 295 }} source={require('../media/Modal/ButtonX.png')} />
+                        </TouchableOpacity>
+
+                        <Text style={{color:'#005082',marginTop:20,fontWeight:'bold',fontSize:18,textAlign:'center'}}>THÔNG TIN NhẬN QUÀ</Text>
+                        <View style={{ flexDirection: 'column',padding:10 }}>
+                            <Text style={{color:'#005082',marginTop:20,fontWeight:'bold',fontSize:16}}>Quà của bạn: <Text style={{color:'#D02027',fontSize:18}}>Pepsi Bucket Hat</Text></Text> 
+                            
+                            
+                            <Text style={styles.title111}>Họ và tên</Text>
+                            <TextInput style={styles.input2} placeholder='VD : Nguyễn Văn A'></TextInput>
+
+                            <Text style={styles.title111}>Số điện thoại</Text>
+                            <TextInput style={styles.input2} placeholder='VD : 012345678'></TextInput>
+
+
+                            <Text style={styles.title111}>Địa chỉ</Text>
+                            <TextInput style={styles.input3} placeholder='Nhập địa chỉ của bạn'></TextInput>
+
+
+                            <Text style={styles.title111}>Ghi chú</Text>
+                            <TextInput style={styles.input3} placeholder='Nhập ghi chú nếu có'></TextInput>
+
+                            <TouchableOpacity style={{marginLeft:80,marginTop:20}}>
+                                <Image source={require('../media/Modal/xacnhan.png')}/>
+                            </TouchableOpacity>
+
+
+                        </View>
+
+
+                    </View>
+                </Modal>
+
                 {/* FORM */}
                 
                     {showdoiqua ?
@@ -116,7 +158,10 @@ const DetailGift = (props) => {
 
                             <Text style={styles.titleVang}>Pepso Bucket Hat</Text>
                             <Text style={styles.titletrang}>còn lại: <Text>500</Text></Text>
+                            <TouchableOpacity onPress={handleModal}>
                             <Image source={require('../media/DetailGift/buttondoiqua.png')}/>
+
+                            </TouchableOpacity>
 
                             </View>
                         </View>
@@ -323,5 +368,19 @@ const styles = StyleSheet.create({
     },
     titletrang:{
         color:'white'
+    },title111:{
+        color:'#005082',fontSize:14,fontWeight:'bold'
+        ,marginTop:15
+    }
+    ,input2:{
+        backgroundColor:'white'
+        ,borderRadius:10,
+        marginTop:10
+    },
+    input3:{
+        backgroundColor:'white'
+        ,borderRadius:10,
+        marginTop:10,
+        height:70
     }
 })
